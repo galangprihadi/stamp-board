@@ -23,6 +23,9 @@ class TilemapGame {
     
     eCommands = undefined;
     eHideOnRun = [];
+
+    playerId = "";
+    playerData = "";
     
     btnSwitch = document.getElementById("button-switch");
     btnExit = document.getElementById("button-exit");
@@ -34,6 +37,13 @@ class TilemapGame {
         this.freeMode = param.freeMode ?? false;
         this.switchMode = param.switchMode ?? false;
         this.homePage = param.homePage || "index.html";
+
+        this.formAction = param.formAction;
+        this.entry1 = param.entry1;
+        this.entry2 = param.entry2;
+
+        this.playerId = "no id";
+        this.playerData = "";
 
         if (!this.switchMode) {
             this.btnSwitch.style.display = "none";
@@ -55,6 +65,8 @@ class TilemapGame {
 
         this.levelTime = 0;
         this.attempt = 0;
+        this.journey = 0;
+        this.step = 0;
 
         this.mapImage = undefined;
 
@@ -127,9 +139,19 @@ class TilemapGame {
         this.btnExit.addEventListener("click", () => {
             this.playSound("pop");
 
-            setTimeout(() => {
-                window.location.href = this.homePage;
-            }, 200);
+            if (this.currentLevel != 1) {
+                this.submitForm();
+            }
+            
+            const handlerClose = () => {
+                setTimeout(() => {
+                    window.location.href = this.homePage;
+                }, 200);
+            }
+
+            this.gameTransition.removeAttribute("style");
+            this.gameTransition.classList.add("ani-transition-in");
+            this.gameTransition.addEventListener("animationend", handlerClose);
         });
 
         this.btnFullScreen.addEventListener("click", () => {
@@ -176,6 +198,8 @@ class TilemapGame {
                     this.attempt += 1;
                     this.attemptTime.textContent = this.attempt;
 
+                    this.journey = this.player.command.filter(item => item !== null).length;
+
                     this.eHideOnRun.forEach((e) => {
                         e.style.display = "none";
                     });
@@ -203,6 +227,8 @@ class TilemapGame {
                 this.gameLevel = gameSet[`level${this.currentLevel}`];
 
                 if (this.gameLevel == undefined) {
+                    this.submitForm();
+
                     const handlerClose = () => {
                         setTimeout(() => {
                             window.location.href = this.homePage;
@@ -227,6 +253,25 @@ class TilemapGame {
         });
         
         this.loadLevel();
+    }
+
+    async submitForm() {
+        if (this.formAction != undefined && this.entry1 != undefined && this.entry2 != undefined) {
+            const formData = new FormData();
+            formData.append(this.entry1, this.playerId);
+            formData.append(this.entry2, this.playerData);
+
+            try {
+                await fetch(this.formAction, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    body: formData,
+                });
+            }
+            catch (error) {
+                console.log(error);
+            }
+        }
     }
 
     playSound(soundId) {
@@ -348,6 +393,8 @@ class TilemapGame {
             this.inputMode = this.gameLevel.inputType;
         }
 
+        this.journey = 0;
+        this.step = 0;
         this.textLevel.textContent = `Stage ${this.currentLevel} (${this.inputMode})`;
 
         // Game
@@ -545,7 +592,10 @@ class TilemapGame {
                             }, 3000);
 
                             clearInterval(this.timerInterval);
-                            console.log("Time: " + this.levelTime + " | Attempt: " + this.attempt);
+
+                            // Record player data
+                            this.playerData += `L${this.currentLevel}T${this.levelTime}A${this.attempt}J${this.journey}S${this.step}`;
+                            console.log(this.playerData);
                         }
                     }
                     else {
@@ -566,6 +616,7 @@ class TilemapGame {
                     this.player.direction = tempDirection;
                     this.player.animation = "walk-" + this.player.direction;
                     this.player.walkingProgress = gameSet.tileSize;
+                    this.step += 1;
 
                     //Debugger
                     this.eCommands[this.player.iteration - 1].classList.add("active");

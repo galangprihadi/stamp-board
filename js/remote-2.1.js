@@ -178,9 +178,15 @@ class TilemapGame {
         this.btnExit.addEventListener("click", () => {
             this.playSound("pop");
 
-            setTimeout(() => {
-                window.location.href = this.homePage;
-            }, 200);
+            const handlerClose = () => {
+                setTimeout(() => {
+                    window.location.href = this.homePage;
+                }, 200);
+            }
+
+            this.gameTransition.removeAttribute("style");
+            this.gameTransition.classList.add("ani-transition-in");
+            this.gameTransition.addEventListener("animationend", handlerClose);
         });
 
         this.btnFullScreen.addEventListener("click", () => {

@@ -1,0 +1,138 @@
+:root {
+    --color-background: #1a1a1a;
+    --color-infoPanel: #42424258;
+    --color-topbar: #42424258;
+
+    --color-black: #1a1a1a;
+
+    --color-yellow: #FBC02D;
+    --color-red: #e14141;
+    --color-green: #388E3C;
+    --color-orange: #f57200;
+    --color-gray: #424242;
+    --color-lightYellow: #b29431;
+    --color-navi: #1A237E;
+    --color-darkGray: #323232;
+    --color-smokeWhite: #f0f0f0;
+    
+}
+
+* {
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
+
+html {
+    -webkit-user-select: none;  /* Safari */
+    -moz-user-select: none;     /* Firefox */
+    -ms-user-select: none;      /* IE10+ */
+    user-select: none;          /* Standar */
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    font-family: Helvetica, Verdana, sans-serif;
+}
+
+
+/* =============================================================================
+================================================================================ Curtain
+============================================================================= */
+
+#curtain {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: none;
+    opacity: 1;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    background-image: url(/images/backgroundPatternBlack.png);
+    background-color: var(--color-background);
+    background-repeat: repeat;
+    background-position: center center;
+    z-index: 20;
+    animation: none;
+}
+
+#curtain.ani-transition-in {
+    display: flex;
+    opacity: 0;
+    animation: 1s aniTransitionIn ease-in 0.5s forwards;
+}
+
+@keyframes aniTransitionIn {
+    0% {
+        opacity: 0;
+        scale: 2;
+    }
+    50% {
+        opacity: 1;
+        scale: 1;
+    }
+    100% {
+        opacity: 1;
+        scale: 1;
+    }
+}
+
+#curtain.ani-transition-out {
+    animation: 1s aniTransitionOut ease-out forwards;
+}
+
+@keyframes aniTransitionOut {
+    0% {
+        opacity: 1;
+        scale: 1;
+    }
+
+    100% {
+        opacity: 0;
+        scale: 2;
+    }
+}
+
+
+/* =============================================================================
+================================================================================ Main layer
+============================================================================= */
+
+.main-layer {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    /* background-image: url(/images/backgroundPatternBlack.png); */
+    /* background-color: var(--color-background); */
+    background-color: #323232;
+    background-repeat: repeat;
+    background-position: center center;
+}
+
+.main-layer #logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30vw;
+    height: 20vh;
+    background-image: url(/images/logo.png);
+    background-size: auto;
+    background-position: center;
+
+    border: 1px solid red;
+}

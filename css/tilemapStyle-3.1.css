@@ -23,8 +23,10 @@
 }
 
 html {
-    user-select: none;
-    
+    -webkit-user-select: none;  /* Safari */
+    -moz-user-select: none;     /* Firefox */
+    -ms-user-select: none;      /* IE10+ */
+    user-select: none;          /* Standar */
 }
 
 body {
@@ -37,11 +39,6 @@ body {
     margin: 0;
     overflow: hidden;
     font-family: Helvetica, Verdana, sans-serif;
-
-    -webkit-user-select: none;  /* Safari */
-    -moz-user-select: none;     /* Firefox */
-    -ms-user-select: none;      /* IE10+ */
-    user-select: none;          /* Standar */
 }
 
 
