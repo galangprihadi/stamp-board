@@ -1,0 +1,333 @@
+:root {
+    --color-background: #1a1a1a;
+    --color-infoPanel: #42424258;
+    --color-topbar: #42424258;
+
+    --color-black: #1a1a1a;
+
+    --color-yellow: #FBC02D;
+    --color-red: #e14141;
+    --color-green: #388E3C;
+    --color-orange: #f57200;
+    --color-gray: #424242;
+    --color-lightYellow: #b29431;
+    --color-navi: #1A237E;
+    --color-darkGray: #323232;
+    --color-smokeWhite: #f0f0f0;
+    
+}
+
+* {
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
+
+html {
+    user-select: none;
+    
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    font-family: Helvetica, Verdana, sans-serif;
+}
+
+
+/* =============================================================================
+================================================================================ Game Transition
+============================================================================= */
+
+.game-transition {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: none;
+    opacity: 0;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    background-image: url(/images/backgroundPatternBlack.png);
+    background-color: var(--color-background);
+    background-repeat: repeat;
+    background-position: center center;
+    z-index: 5;
+    animation: none;
+}
+
+.ani-transition-in {
+    display: flex;
+    animation: 2s aniTransitionIn ease-in 0.5s forwards;
+}
+
+@keyframes aniTransitionIn {
+    0% {
+        opacity: 0;
+        scale: 2;
+    }
+    50% {
+        opacity: 1;
+        scale: 1;
+    }
+    100% {
+        opacity: 1;
+        scale: 1;
+    }
+}
+
+.ani-transition-out {
+    animation: 1s aniTransitionOut ease-out forwards;
+}
+
+@keyframes aniTransitionOut {
+    0% {
+        opacity: 1;
+        scale: 1;
+    }
+
+    100% {
+        opacity: 0;
+        scale: 2;
+    }
+}
+
+
+/* =============================================================================
+================================================================================ Game layer
+============================================================================= */
+
+.game-layer {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    background-image: url(/images/backgroundPatternBlack.png);
+    background-color: var(--color-background);
+    background-repeat: repeat;
+    background-position: center center;
+}
+
+
+/* =============================================================================
+================================================================================ Game Panel
+============================================================================= */
+
+.game-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    margin-top: 2vh;
+}
+
+.game-container .canvas-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+}
+
+.game-container .canvas-wrapper .game-title {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 5vw;
+}
+
+.game-container .canvas-wrapper button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10vw;
+    height: 5vw;
+    margin-right: 1vw;
+    border: none;
+    border-radius: 3vw;
+    background-color: var(--color-yellow);
+    box-shadow: inset -2px -2px 5px rgba(0, 0, 0, 0.4), 2px 2px 3px rgba(0, 0, 0, 0.3);
+    font-size: 2vw;
+    font-weight: bold;
+    color: var(--color-black);
+}
+
+#level-text {
+    margin-left: 1vw;
+    margin-right: auto;
+    font-size: 3vw;
+    letter-spacing: 0.1vw;
+    font-weight: bold;
+    color: var(--color-yellow);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+#game-canvas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* width: 70vw; */
+    height: 35vh;
+    margin-top: 1vh;
+    border-radius: 2vw;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.game-container .info-panel {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    border-radius: 4vw;
+    background-color: var(--color-infoPanel);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.info-panel button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 12vw;
+    height: 6vw;
+    margin: 1.5vw;
+    border: none;
+    border-radius: 3vw;
+    background-color: var(--color-yellow);
+    box-shadow: inset -2px -2px 5px rgba(0, 0, 0, 0.4), 2px 2px 3px rgba(0, 0, 0, 0.3);
+    font-size: 2.5vw;
+    font-weight: bold;
+    color: var(--color-black);
+}
+
+.game-container #button-exit {
+    width: 6vw;
+    margin-bottom: 3vh;
+    margin-left: auto;
+    background-color: var(--color-red);
+    font-size: 3vw;
+    color: #ffeaea;
+}
+
+.game-container .text {
+    margin-top: 1vh;
+    font-size: 2vw;
+    font-weight: 500;
+    text-align: center;
+    letter-spacing: 0.1vw;
+    color: var(--color-yellow);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.game-container .text span {
+    font-size: 3vw;
+    font-weight: bold;
+}
+
+.game-container #button-fullscreen {
+    margin-top: 3vh;
+    color: #433001;
+}
+
+.game-container #button-reset {
+    height: 10vw;
+    margin-top: auto;
+    font-size: 3vw;
+    background-color: var(--color-orange);
+    color: #512600;
+}
+
+.game-container #button-reset.next {
+    background-color: var(--color-green);
+    color: #e8ffe9;
+}
+
+.game-container #button-reset.gameover {
+    background-color: var(--color-red);
+    color: #ffeaea;
+}
+
+
+/* =============================================================================
+================================================================================ Command Panel
+============================================================================= */
+
+#command-panel {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 83vw;
+    row-gap: 2vw;
+    column-gap: 2vw;
+    margin-top: 5vh;
+}
+
+#command-panel button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10vw;
+    height: 10vw;
+    border: none;
+    border-radius: 50%;
+    background-color: var(--color-orange);
+    box-shadow: inset -2px -2px 5px rgba(0, 0, 0, 0.4), 2px 2px 3px rgba(0, 0, 0, 0.3);
+    font-size: 5vw;
+    color: var(--color-black);
+}
+
+#command-panel button.delete {
+    background-color: transparent;
+    box-shadow: none;
+    font-size: 5vw;
+    color: var(--color-red);
+}
+
+
+/* =============================================================================
+================================================================================ Input Panel
+============================================================================= */
+
+#input-panel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 30vw;
+    row-gap: 2vw;
+    column-gap: 2vw;
+    margin-top: auto;
+    margin-bottom: 10vh;
+}
+
+
+/* =============================================================================
+================================================================================ Tap Mode
+============================================================================= */
+
+#input-panel .tap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15vw;
+    height: 15vw;
+    border-radius: 50%;
+    background-color: var(--color-yellow);
+    box-shadow: inset -2px -2px 5px rgba(0, 0, 0, 0.4), 2px 2px 3px rgba(0, 0, 0, 0.3);
+    font-size: 7vw;
+    color: var(--color-black);
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code the Cat</title>
+
+    <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+    <link rel="stylesheet" href="/css/tilemapStyle-1.1.css" type="text/css">
+</head>
+<body>
+    <div class="game-layer">
+        <div class="top-bar">
+            <div class="text">Level 1</div>
+            <div class="text box">Score <span>100</span></div>
+            <div class="text box">Time <span>100</span></div>
+            <div class="text box">Attempt <span>100</span></div>
+            <button>A</button>
+            <button class="red">B</button>
+        </div>
+
+        <div class="canvas-container">
+            <canvas id="game-canvas"></canvas>
+            <div class="mode-container">
+                <button>A</button>
+                <button>B</button>
+                <button>C</button>
+                <button>D</button>
+                <button>E</button>
+            </div>
+        </div>
+        
+        <div id="command-panel">
+            <div class="flick"></div>
+            <div class="flick"></div>
+            <div class="flick"></div>
+            <div class="flick"></div>
+            <div class="flick"></div>
+            <div class="flick"></div>
+            <div class="flick"></div>
+        </div>
+
+        <div class="direction-panel">
+            <button onclick="arrowButton('up');">⇧</button>
+            <button onclick="arrowButton('right');">⇨</button>
+            <button onclick="arrowButton('down');">⇩</button>
+            <button onclick="arrowButton('left');">⇦</button>
+            <button onclick="arrowButton('walk');">▷</button>
+        </div>
+    </div>
+
+    <script src="tilemapData-1.1.js"></script>
+    <script src="/js/tilemap-1.1.js"></script>
+
+    <script>
+        const game = new TilemapGame();
+    </script>
+
+</body>
+</html>
