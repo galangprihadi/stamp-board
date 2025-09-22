@@ -129,9 +129,9 @@ body {
     justify-content: center;
     align-items: center;
     width: 30vw;
-    height: 20vh;
     background-image: url(/images/logo.png);
-    background-size: auto;
+    background-size: contain;
+    background-repeat: no-repeat;
     background-position: center;
 
     border: 1px solid red;
