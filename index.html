@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code the Cat</title>
 
     <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
@@ -12,12 +12,63 @@
 <body>
     <div id="curtain"></div>
 
-    <div class="main-layer">
-        <div id="logo">Testing</div>
-        <button id="button-kirim">kirim</button>
+    <div id="main-layer">
+        <img src="/images/logo.png" alt="Game Logo" id="logo">
+
+        <div id="menu-panel">
+            <div class="section">Free Play</div>
+            <div class="button-menu" id="menuA1">
+                <div class="title">Remote Control</div>
+                <div class="text">Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.</div>
+            </div>
+            <div class="button-menu" id="menuA2">
+                <div class="title">Programming</div>
+                <div class="text">Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.</div>
+            </div>
+
+            <div class="section orange">Playtesting Menu</div>
+            <div class="button-menu" id="menuB1">
+                <div class="title orange">Pre Warming Up</div>
+                <div class="text orange">Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.</div>
+            </div>
+            <div class="button-menu" id="menuB2">
+                <div class="title orange">Warming Up</div>
+                <div class="text orange">Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.</div>
+            </div>
+            <div class="button-menu" id="menuB3">
+                <div class="title orange">Playtesting</div>
+                <div class="text orange">Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.</div>
+            </div>
+        </div>
+
+        <div id="player-panel">
+            <div class="section">Gender</div>
+            <div class="gender">
+                <button><i class="fa-solid fa-child"></i></button>
+                <button><i class="fa-solid fa-child-dress"></i></button>
+            </div>
+            <div class="section">Age</div>
+            <div class="age">
+                <button>6</button>
+                <button>7</button>
+                <button>8</button>
+                <button>9</button>
+                <button>10</button>
+                <button>11</button>
+                <button>12</button>
+            </div>
+            <div class="navigation">
+                <button id="button-cancel" class="active">Cancel</button>
+                <button id="button-play">Play</button>
+            </div>
+        </div>
     </div>
 
     <script src="/js/script.js"></script>
+
+    <script>
+        const menu = new MainMenu();
+    </script>
     
 </body>
 </html>
