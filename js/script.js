@@ -15,6 +15,20 @@ class MainMenu {
     btnCancel = document.getElementById("button-cancel");
     btnPlay = document.getElementById("button-play");
 
+    soundCling = document.getElementById("soundCling");
+    soundPop = document.getElementById("soundPop");
+
+    playSound(soundId) {
+        if (soundId == "cling") {
+            this.soundCling.currentTime = 0;
+            this.soundCling.play();
+        }
+        else if (soundId == "pop") {
+            this.soundPop.currentTime = 0;
+            this.soundPop.play();
+        }
+    }
+
     constructor() {
         this.destination = undefined;
         this.gender = undefined;
@@ -62,23 +76,29 @@ class MainMenu {
             let gamePage = undefined;
 
             switch (n) {
-                case 0 : gamePage = "page1.html"; break;
-                case 1 : gamePage = "page2.html"; break;
-                case 2 : gamePage = "page3.html"; break;
-                case 3 : gamePage = "page4.html"; break;
-                case 4 : gamePage = "page5.html"; break;
+                case 0 : gamePage = "remote-control.html"; break;
+                case 1 : gamePage = "programming.html"; break;
+                case 2 : gamePage = "pre-game.html"; break;
+                case 3 : gamePage = "warming-up.html"; break;
+                case 4 : gamePage = "main-game.html"; break;
             }
 
             btn.addEventListener("click", () => {
-                this.panelMenu.style.display = "none";
-                this.panelPlayer.style.display = "flex";
-                this.destination = gamePage;
+                if (btn.classList.value == "button-menu active") {
+                    this.playSound("pop");
+
+                    this.panelMenu.style.display = "none";
+                    this.panelPlayer.style.display = "flex";
+                    this.destination = gamePage;
+                }
             });
         });
 
         // Gender Buttons
         this.btnGenders.forEach((btn, n) => {
             btn.addEventListener("click", () => {
+                this.playSound("pop");
+
                 this.btnGenders.forEach((element) => {
                     element.classList.remove("active");
                 });
@@ -99,6 +119,8 @@ class MainMenu {
         // Age Buttons
         this.btnAges.forEach((btn, n) => {
             btn.addEventListener("click", () => {
+                this.playSound("pop");
+
                 this.btnAges.forEach((element) => {
                     element.classList.remove("active");
                 });
@@ -113,6 +135,7 @@ class MainMenu {
 
         // Cancel Button
         this.btnCancel.addEventListener("click", () => {
+            this.playSound("pop");
             
             this.btnPlay.classList.remove("active");
             
@@ -134,6 +157,8 @@ class MainMenu {
         // Play Button
         this.btnPlay.addEventListener("click", () => {
             if (this.btnPlay.className == "active") {
+                this.playSound("cling");
+
                 console.log(`${this.destination} | ${this.gender} | ${this.age}`);
             }
         })
