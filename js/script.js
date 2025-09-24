@@ -79,7 +79,7 @@ class MainMenu {
                 case 0 : gamePage = "remote-control.html"; break;
                 case 1 : gamePage = "programming.html"; break;
                 case 2 : gamePage = "pre-game.html"; break;
-                case 3 : gamePage = "warming-up.html"; break;
+                case 3 : gamePage = "input-method.html"; break;
                 case 4 : gamePage = "main-game.html"; break;
             }
 
@@ -159,7 +159,8 @@ class MainMenu {
             if (this.btnPlay.className == "active") {
                 this.playSound("cling");
 
-                console.log(`${this.destination} | ${this.gender} | ${this.age}`);
+                this.closeCurtain();
+                // console.log(`${this.destination} | ${this.gender} | ${this.age}`);
             }
         })
     }

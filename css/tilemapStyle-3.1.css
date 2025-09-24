@@ -194,6 +194,7 @@ body {
     align-items: center;
     flex-direction: column;
     height: 100%;
+    width: 19vw;
     border-radius: 4vw;
     background-color: var(--color-infoPanel);
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);

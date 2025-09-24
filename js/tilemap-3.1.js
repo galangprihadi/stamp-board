@@ -38,12 +38,13 @@ class TilemapGame {
         this.switchMode = param.switchMode ?? false;
         this.homePage = param.homePage || "index.html";
 
+        this.formId = param.formId || "no id";
         this.formAction = param.formAction;
         this.entry1 = param.entry1;
         this.entry2 = param.entry2;
 
         this.playerId = "no id";
-        this.playerData = "";
+        this.playerData = this.formId + " ";
 
         if (!this.switchMode) {
             this.btnSwitch.style.display = "none";
@@ -373,6 +374,24 @@ class TilemapGame {
         this.mapImage.src = this.gameLevel.map;
 
         // Goals and Obstacles
+        this.goal = {
+            image : [],
+            frame : [],
+            pos : [],
+            aniProgress : 0,
+            aniCycle : gameSet.goalAniCycle,
+            isVisible : [],
+        }
+
+        this.obs = {
+            image : [],
+            frame : [],
+            pos : [],
+            aniProgress : 0,
+            aniCycle : gameSet.obsAniCycle,
+            isVisible : [],
+        }
+        
         this.loadObject(this.goal, this.gameLevel.goals);
         this.loadObject(this.obs, this.gameLevel.obstacles);
 
@@ -594,7 +613,19 @@ class TilemapGame {
                             clearInterval(this.timerInterval);
 
                             // Record player data
-                            this.playerData += `L${this.currentLevel}T${this.levelTime}A${this.attempt}J${this.journey}S${this.step}`;
+                            this.inputMode
+
+                            let inputModeId = 0;
+
+                            switch (this.inputMode) {
+                                case "Tap Mode"      : inputModeId = 1; break;
+                                case "Scroll Mode"   : inputModeId = 2; break;
+                                case "Flick Mode"    : inputModeId = 3; break;
+                                case "Drag and Drop" : inputModeId = 4; break;
+                                case "Stamp Mode"    : inputModeId = 5; break;
+                            }
+
+                            this.playerData += `L${this.currentLevel}I${inputModeId}T${this.levelTime}A${this.attempt}J${this.journey}S${this.step}`;
                             console.log(this.playerData);
                         }
                     }
@@ -989,6 +1020,12 @@ class TilemapGame {
                     this.setIcon(icon, 4);
                     this.player.command[i] = "left";
                 });
+
+                this.eHideOnRun.push(btn1);
+                this.eHideOnRun.push(btn2);
+                this.eHideOnRun.push(btn3);
+                this.eHideOnRun.push(btn4);
+                this.eHideOnRun.push(btn5);
             }
 
             this.eCommands = document.querySelectorAll(".tag");
