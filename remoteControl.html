@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Code the Cat</title>
+
+    <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+    <link rel="stylesheet" href="/css/remoteStyle-2.1.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css">
+</head>
+<body>
+    <audio id="soundBgm" src="/sounds/bgm.mp3" preload="auto" loop></audio>
+    <audio id="soundCling" src="/sounds/cling.mp3" preload="auto"></audio>
+    <audio id="soundDone" src="/sounds/done.mp3" preload="auto"></audio>
+    <audio id="soundPop" src="/sounds/pop.mp3" preload="auto"></audio>
+    <audio id="soundShake" src="/sounds/shake.mp3" preload="auto"></audio>
+    <audio id="soundTransition" src="/sounds/transition.mp3" preload="auto"></audio>
+
+    <div class="game-transition"></div>
+    
+    <div class="game-layer">
+        <div class="game-container">
+            <div class="canvas-wrapper">
+                <div class="game-title">
+                    <span id="level-text">Level ?</span>
+                    <button id="button-switch">Switch</button>
+                </div>
+                <canvas id="game-canvas"></canvas>
+            </div>
+            <div class="info-panel">
+                <button id="button-exit">X</button>
+                <button id="button-fullscreen">Screen</button>
+                <button id="button-run">Undo</button>
+            </div>
+        </div>
+
+        <div id="command-panel"></div>
+    </div>
+
+    <script src="/remoteControl.js"></script>
+    <script src="/js/remote-2.1.js"></script>
+
+    <script>
+        const game = new TilemapGame({
+            switchMode : true,
+            homePage : "/index.html",
+        });
+    </script>
+
+</body>
+</html>

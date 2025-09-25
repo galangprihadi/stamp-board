@@ -13,7 +13,7 @@ const gameSet = {
     level1: {
         map: "/images/map.png",
         commandLength: 8,
-        inputType: "Tap Mode",
+        inputType: "Stamp Mode",
         player: {x:1, y:1, direction: "down", image: "/images/cat.png"},
         goals: {
             goal1: {x:3, y:1, image: "/images/goalFish.png"},
@@ -31,7 +31,7 @@ const gameSet = {
     level2: {
         map: "/images/map.png",
         commandLength: 8,
-        inputType: "Scroll Mode",
+        inputType: "Tap Mode",
         player: {x:1, y:1, direction: "down", image: "/images/cat.png"},
         goals: {
             goal1: {x:2, y:2, image: "/images/goalFish.png"},
@@ -50,7 +50,7 @@ const gameSet = {
     level3: {
         map: "/images/map.png",
         commandLength: 8,
-        inputType: "Flick Mode",
+        inputType: "Scroll Mode",
         player: {x:1, y:1, direction: "down", image: "/images/cat.png"},
         goals: {
             goal1: {x:2, y:2, image: "/images/goalFish.png"},
@@ -68,7 +68,7 @@ const gameSet = {
     level4: {
         map: "/images/map.png",
         commandLength: 8,
-        inputType: "Drag and Drop",
+        inputType: "Flick Mode",
         player: {x:1, y:3, direction: "down", image: "/images/cat.png"},
         goals: {
             goal1: {x:2, y:2, image: "/images/goalFish.png"},
@@ -87,7 +87,7 @@ const gameSet = {
     level5: {
         map: "/images/map.png",
         commandLength: 8,
-        inputType: "Stamp Mode",
+        inputType: "Drag and Drop",
         player: {x:2, y:3, direction: "down", image: "/images/cat.png"},
         goals: {
             goal1: {x:4, y:1, image: "/images/goalFish.png"},
@@ -101,23 +101,4 @@ const gameSet = {
             obs5: {x:3, y:2, image: "/images/obsGrass.png"},
         }
     },
-
-    randomInputType() {
-        let inputName = ["Tap Mode", "Scroll Mode", "Flick Mode", "Drag and Drop", "Stamp Mode"];
-
-        for (let i=0; i < inputName.length; i++) {
-            const randomNumber = Math.floor(Math.random() * 5);
-            const temp = inputName[i];
-            inputName[i] = inputName[randomNumber];
-            inputName[randomNumber] = temp;
-        }
-
-        this.level1.inputType = inputName[0];
-        this.level2.inputType = inputName[1];
-        this.level3.inputType = inputName[2];
-        this.level4.inputType = inputName[3];
-        this.level5.inputType = inputName[4];
-
-        console.log(inputName);
-    }
 }

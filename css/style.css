@@ -75,31 +75,31 @@ body {
 @keyframes aniTransitionIn {
     0% {
         opacity: 0;
-        scale: 2;
+        /* scale: 2; */
     }
     50% {
         opacity: 1;
-        scale: 1;
+        /* scale: 1; */
     }
     100% {
         opacity: 1;
-        scale: 1;
+        /* scale: 1; */
     }
 }
 
 #curtain.ani-transition-out {
-    animation: 1s aniTransitionOut ease-out 1s forwards;
+    animation: 1s aniTransitionOut ease-out 0.5s forwards;
 }
 
 @keyframes aniTransitionOut {
     0% {
         opacity: 1;
-        scale: 1;
+        /* scale: 1; */
     }
 
     100% {
         opacity: 0;
-        scale: 2;
+        /* scale: 2; */
     }
 }
 
@@ -315,22 +315,23 @@ body {
     opacity: 1;
 }
 
-#player-panel .navigation {
+#player-panel #navigation-panel {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    column-gap: 13vw;
+    /* column-gap: 13vw; */
     margin-top: 8vh;
     margin-bottom: 5vh;
 }
 
-#player-panel .navigation button {
+#player-panel #navigation-panel button {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 15vw;
     height: 7vw;
+    margin: 0 2vw;
     border: none;
     border-radius: 5vw;
     box-shadow: inset -2px -2px 5px rgba(0, 0, 0, 0.4), 2px 2px 3px rgba(0, 0, 0, 0.3);
@@ -340,16 +341,17 @@ body {
     opacity: 0.3;
 }
 
-#player-panel .navigation button.active {
+#player-panel #navigation-panel button.active {
     opacity: 1;
 }
 
-#player-panel .navigation button#button-play {
+#player-panel #navigation-panel button.button-play {
     background-color: var(--color-green);
     color: #e8ffe9;
 }
 
-#player-panel .navigation button#button-cancel {
+#player-panel #navigation-panel button.button-cancel {
     background-color: var(--color-red);
     color: #ffeaea;
+    margin-right: 8vw;
 }

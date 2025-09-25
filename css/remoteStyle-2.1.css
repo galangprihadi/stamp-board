@@ -74,15 +74,15 @@ body {
 @keyframes aniTransitionIn {
     0% {
         opacity: 0;
-        scale: 2;
+        /* scale: 2; */
     }
     50% {
         opacity: 1;
-        scale: 1;
+        /* scale: 1; */
     }
     100% {
         opacity: 1;
-        scale: 1;
+        /* scale: 1; */
     }
 }
 
@@ -93,12 +93,12 @@ body {
 @keyframes aniTransitionOut {
     0% {
         opacity: 1;
-        scale: 1;
+        /* scale: 1; */
     }
 
     100% {
         opacity: 0;
-        scale: 2;
+        /* scale: 2; */
     }
 }
 
@@ -525,8 +525,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 6vw;
-    height: 6vw;
+    width: 6.6vw;
+    height: 6.6vw;
     border: none;
     border-radius: 50%;
     background-color: var(--color-orange);

@@ -334,6 +334,24 @@ class TilemapGame {
         this.gameLevel = gameSet[`level${this.currentLevel}`];
 
         // Game
+        this.goal = {
+            image : [],
+            frame : [],
+            pos : [],
+            aniProgress : 0,
+            aniCycle : gameSet.goalAniCycle,
+            isVisible : [],
+        }
+
+        this.obs = {
+            image : [],
+            frame : [],
+            pos : [],
+            aniProgress : 0,
+            aniCycle : gameSet.obsAniCycle,
+            isVisible : [],
+        }
+        
         this.isRunning = false;
         this.isGameOver = false;
 

@@ -8,12 +8,11 @@ class MainMenu {
     gameTransition = document.getElementById("curtain");
     panelMenu = document.getElementById("menu-panel");
     panelPlayer = document.getElementById("player-panel");
+    panelNavigation = document.getElementById("navigation-panel");
 
     btnMenus = document.querySelectorAll(".button-menu");
     btnGenders = document.querySelectorAll(".gender button");
     btnAges = document.querySelectorAll(".age button");
-    btnCancel = document.getElementById("button-cancel");
-    btnPlay = document.getElementById("button-play");
 
     soundCling = document.getElementById("soundCling");
     soundPop = document.getElementById("soundPop");
@@ -28,20 +27,6 @@ class MainMenu {
             this.soundPop.play();
         }
     }
-
-    constructor() {
-        this.destination = undefined;
-        this.gender = undefined;
-        this.age = undefined;
-
-        this.panelPlayer.style.display = "none";
-
-        this.buttonInit();
-        this.openCurtain();
-    }
-
-
-    // ======================================================================================> Curtain Management
 
     openCurtain() {
         const handlerOpen = () => {
@@ -66,33 +51,46 @@ class MainMenu {
         this.gameTransition.addEventListener("animationend", handlerClose);
     }
 
+    constructor() {
+        this.destination = undefined;
+        this.gender = undefined;
+        this.age = undefined;
 
-    // ======================================================================================> Buttons
+        this.panelPlayer.style.display = "none";
 
-    buttonInit() {
+        this.setPanelMenu();
+        this.openCurtain();
+    }
+
+
+    // ======================================================================================> Menu Panel
+
+    setPanelMenu() {
+        this.destination = undefined;
+        this.gender = undefined;
+        this.age = undefined;
+
+        this.panelMenu.style.display = "flex";
+        this.panelPlayer.style.display = "none";
 
         // Menu Buttons
         this.btnMenus.forEach((btn, n) => {
-            let gamePage = undefined;
-
-            switch (n) {
-                case 0 : gamePage = "remote-control.html"; break;
-                case 1 : gamePage = "programming.html"; break;
-                case 2 : gamePage = "pre-game.html"; break;
-                case 3 : gamePage = "input-method.html"; break;
-                case 4 : gamePage = "main-game.html"; break;
-            }
-
             btn.addEventListener("click", () => {
                 if (btn.classList.value == "button-menu active") {
                     this.playSound("pop");
 
-                    this.panelMenu.style.display = "none";
-                    this.panelPlayer.style.display = "flex";
-                    this.destination = gamePage;
+                    this.destination = btn.getAttribute("destination");
+                    this.setPlayerPanel();
                 }
             });
         });
+    }
+
+    setPlayerPanel() {
+        this.panelNavigation.innerHTML = "";
+
+        this.panelMenu.style.display = "none";
+        this.panelPlayer.style.display = "flex";
 
         // Gender Buttons
         this.btnGenders.forEach((btn, n) => {
@@ -116,6 +114,7 @@ class MainMenu {
             });
         });
 
+
         // Age Buttons
         this.btnAges.forEach((btn, n) => {
             btn.addEventListener("click", () => {
@@ -134,40 +133,61 @@ class MainMenu {
         });
 
         // Cancel Button
+        this.btnCancel = document.createElement("button");
+        this.btnCancel.className = "button-cancel active";
+        this.btnCancel.textContent = "Cancel";
+        this.panelNavigation.append(this.btnCancel);
+
         this.btnCancel.addEventListener("click", () => {
             this.playSound("pop");
-            
-            this.btnPlay.classList.remove("active");
-            
-            this.gender = undefined;
+
+            this.setPanelMenu();
+
             this.btnGenders.forEach((element) => {
                 element.classList.remove("active");
             });
 
-            this.age = undefined;
             this.btnAges.forEach((element) => {
                 element.classList.remove("active");
             });
-
-            this.destination = undefined;
-            this.panelMenu.style.display = "flex";
-            this.panelPlayer.style.display = "none";
         });
 
-        // Play Button
-        this.btnPlay.addEventListener("click", () => {
-            if (this.btnPlay.className == "active") {
-                this.playSound("cling");
 
-                this.closeCurtain();
-                // console.log(`${this.destination} | ${this.gender} | ${this.age}`);
+        // Play Button
+        let pages = this.destination.split(",");
+        pages = pages.map(item => item.trim().replace(/"/g, ''));
+
+        this.btnPlays = [];
+
+        pages.forEach((page, i) => {
+            this.btnPlays[i] = document.createElement("button");
+            this.btnPlays[i].className = "button-play";
+
+            if (pages.length == 1) {
+                this.btnPlays[i].textContent = "Play";
             }
-        })
+            else {
+                this.btnPlays[i].textContent = "Game " + String.fromCharCode(i + 65);
+            }
+            
+            this.panelNavigation.append(this.btnPlays[i]);
+
+            this.btnPlays[i].addEventListener("click", () => {
+                if (this.btnPlays[i].className == "button-play active") {
+                    this.playSound("cling");
+
+                    this.destination = pages[i];
+                    this.closeCurtain();
+                }
+            });
+        });
     }
 
     setPlayButton(){
         if (this.destination !== undefined && this.gender !== undefined && this.age !== undefined) {
-            this.btnPlay.classList.add("active");
+            this.btnPlays.forEach((btn) => {
+                btn.classList.add("active");
+            });
         }
     }
 
