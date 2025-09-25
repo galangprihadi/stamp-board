@@ -6,16 +6,16 @@ const gameSet = {
     moveDelay : 10,
 
     level1: {
-        map: "/images/map.png",
-        player: {x:2, y:3, direction: "down", image: "/images/cat.png"},
+        map: "../images/map.png",
+        player: {x:2, y:3, direction: "down", image: "../images/cat.png"},
         goals: {
-            goal1: {x:4, y:1, image: "/images/goalFish.png"},
-            goal2: {x:3, y:3, image: "/images/goalFish.png"},
+            goal1: {x:4, y:1, image: "../images/goalFish.png"},
+            goal2: {x:3, y:3, image: "../images/goalFish.png"},
         },
         obstacles: {
-            obs1: {x:1, y:1, image: "/images/obsBox.png"},
-            obs2: {x:1, y:3, image: "/images/obsGrass.png"},
-            obs3: {x:4, y:4, image: "/images/obsBox.png"},
+            obs1: {x:1, y:1, image: "../images/obsBox.png"},
+            obs2: {x:1, y:3, image: "../images/obsGrass.png"},
+            obs3: {x:4, y:4, image: "../images/obsBox.png"},
         }
     }
 }
