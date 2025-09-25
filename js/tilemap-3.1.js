@@ -43,7 +43,7 @@ class TilemapGame {
         this.entry1 = param.entry1;
         this.entry2 = param.entry2;
 
-        this.playerId = "no id";
+        this.playerId = localStorage.getItem("playerData") || "no id";
         this.playerData = this.formId + " ";
 
         if (!this.switchMode) {
@@ -626,7 +626,6 @@ class TilemapGame {
                             }
 
                             this.playerData += `L${this.currentLevel}I${inputModeId}T${this.levelTime}A${this.attempt}J${this.journey}S${this.step}`;
-                            console.log(this.playerData);
                         }
                     }
                     else {

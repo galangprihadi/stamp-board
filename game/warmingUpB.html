@@ -6,7 +6,7 @@
     <title>Code the Cat</title>
 
     <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
-    <link rel="stylesheet" href="/css/tilemapStyle-3.1.css" type="text/css">
+    <link rel="stylesheet" href="/css/remoteStyle-2.1.css" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css">
 </head>
 <body>
@@ -30,28 +30,21 @@
             </div>
             <div class="info-panel">
                 <button id="button-exit">X</button>
-                <div class="text">Time<br><span id="time-text">100</span></div>
-                <div class="text">Attempt<br><span id="attempt-text">100</span></div>
                 <button id="button-fullscreen">Screen</button>
-                <button id="button-run">Run</button>
+                <button id="button-run">Undo</button>
             </div>
         </div>
 
         <div id="command-panel"></div>
     </div>
 
-    <script src="/inputMethodA.js"></script>
-    <script src="/js/tilemap-3.1.js"></script>
+    <script src="warmingUpB.js"></script>
+    <script src="/js/remote-2.1.js"></script>
 
     <script>
         const game = new TilemapGame({
-            freeMode : false,
             switchMode : false,
             homePage : "/index.html",
-            formId: "input",
-            formAction: "https://docs.google.com/forms/u/0/d/e/1FAIpQLSdWQt71q2d6Vjtw4ulIC40XWXab5ZUdTihKRIi0YWg5K9j8GA/formResponse",
-            entry1: "entry.1262155010",
-            entry2: "entry.1024717398",
         });
     </script>
 

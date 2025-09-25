@@ -177,6 +177,8 @@ class MainMenu {
                     this.playSound("cling");
 
                     this.destination = pages[i];
+                    localStorage.setItem("playerData", `${this.gender}-${this.age}`);
+
                     this.closeCurtain();
                 }
             });
