@@ -600,7 +600,7 @@ class TilemapGame {
 
                             if (gameSet[`level${this.currentLevel + 1}`] == undefined) {
                                 this.btnRun.classList.add("gameover");
-                                this.btnRun.textContent = "Game Over";
+                                this.btnRun.textContent = "Finish";
                             }
                             else {
                                 this.btnRun.textContent = "Next";

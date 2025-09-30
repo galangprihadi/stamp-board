@@ -591,7 +591,7 @@ class TilemapGame {
                         if (gameSet[`level${this.currentLevel + 1}`] == undefined) {
                             this.btnUndo.classList.remove(this.btnUndo.classList);
                             this.btnUndo.classList.add("gameover");
-                            this.btnUndo.textContent = "Game Over";
+                            this.btnUndo.textContent = "Finish";
                         }
                         else {
                             this.btnUndo.classList.remove(this.btnUndo.classList);
