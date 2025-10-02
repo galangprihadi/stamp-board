@@ -18,8 +18,8 @@
 }
 
 * {
-    box-sizing:border-box;
-    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+    font-family: Roboto, Inter, sans-serif;
 }
 
 html {
