@@ -206,6 +206,8 @@ class TilemapGame {
                 } else if (document.msExitFullscreen) {
                     document.msExitFullscreen();
                 }
+
+                this.btnFullScreen.innerHTML = `<i class="fa-solid fa-expand">`;
             }
             else {
                 const eHtml = document.documentElement;
@@ -219,6 +221,8 @@ class TilemapGame {
                 } else if (eHtml.msRequestFullscreen) {
                     eHtml.msRequestFullscreen();
                 }
+
+                this.btnFullScreen.innerHTML = `<i class="fa-solid fa-compress"></i>`;
             }
         });
 
@@ -251,7 +255,7 @@ class TilemapGame {
                 else {
                     this.btnUndo.classList.remove(this.btnUndo.classList);
                     this.btnUndo.classList.add("gameover");
-                    this.btnUndo.textContent = "Undo";
+                    this.btnUndo.innerHTML = `<i class="fa-solid fa-delete-left"></i>`;
                     this.btnUndo.style.display = "none";
 
                     setTimeout(() => {
@@ -591,12 +595,12 @@ class TilemapGame {
                         if (gameSet[`level${this.currentLevel + 1}`] == undefined) {
                             this.btnUndo.classList.remove(this.btnUndo.classList);
                             this.btnUndo.classList.add("gameover");
-                            this.btnUndo.textContent = "Finish";
+                            this.btnUndo.innerHTML = `<i class="fa-solid fa-flag-checkered"></i>`;
                         }
                         else {
                             this.btnUndo.classList.remove(this.btnUndo.classList);
                             this.btnUndo.classList.add("next");
-                            this.btnUndo.textContent = "Next";
+                            this.btnUndo.innerHTML = `<i class="fa-solid fa-forward"></i>`;
                         }
 
                         setTimeout(() => {

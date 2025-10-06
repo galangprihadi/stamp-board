@@ -163,7 +163,7 @@ body {
     border-radius: 3vw;
     background-color: var(--color-yellow);
     box-shadow: inset -2px -2px 5px rgba(0, 0, 0, 0.4), 2px 2px 3px rgba(0, 0, 0, 0.3);
-    font-size: 2vw;
+    font-size: 2.4vw;
     font-weight: bold;
     color: var(--color-black);
 }
@@ -242,6 +242,7 @@ body {
 
 .game-container #button-fullscreen {
     margin-top: 3vh;
+    margin-top: 3vh;
     color: #433001;
 }
 
@@ -250,7 +251,8 @@ body {
     height: 16vw;
     border-radius: 50%;
     margin-top: auto;
-    font-size: 3vw;
+    font-size: 5vw;
+    font-weight: normal;
     background-color: var(--color-green);
     color: #e8ffe9;
 }

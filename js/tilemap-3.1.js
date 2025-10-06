@@ -168,6 +168,8 @@ class TilemapGame {
                 } else if (document.msExitFullscreen) {
                     document.msExitFullscreen();
                 }
+
+                this.btnFullScreen.innerHTML = `<i class="fa-solid fa-expand">`;
             }
             else {
                 const eHtml = document.documentElement;
@@ -181,6 +183,8 @@ class TilemapGame {
                 } else if (eHtml.msRequestFullscreen) {
                     eHtml.msRequestFullscreen();
                 }
+
+                this.btnFullScreen.innerHTML = `<i class="fa-solid fa-compress"></i>`;
             }
         });
 
@@ -194,7 +198,7 @@ class TilemapGame {
                     
                     this.btnRun.style.display = "none";
                     this.btnRun.classList.add("reset");
-                    this.btnRun.textContent = "Reset";
+                    this.btnRun.innerHTML = `<i class="fa-solid fa-rotate-left"></i>`;
 
                     this.attempt += 1;
                     this.attemptTime.textContent = this.attempt;
@@ -217,7 +221,7 @@ class TilemapGame {
                     this.resetLevel();
 
                     this.btnRun.classList.remove("reset");
-                    this.btnRun.textContent = "Run";
+                    this.btnRun.innerHTML = `<i class="fa-solid fa-play"></i>`;
                 }
             }
             // Next level
@@ -241,7 +245,7 @@ class TilemapGame {
                     this.gameTransition.addEventListener("animationend", handlerClose);
                 }
                 else {
-                    this.btnRun.textContent = "Run";
+                    this.btnRun.innerHTML = `<i class="fa-solid fa-play"></i>`;
                     this.btnRun.style.display = "none";
 
                     setTimeout(() => {
@@ -600,10 +604,10 @@ class TilemapGame {
 
                             if (gameSet[`level${this.currentLevel + 1}`] == undefined) {
                                 this.btnRun.classList.add("gameover");
-                                this.btnRun.textContent = "Finish";
+                                this.btnRun.innerHTML = `<i class="fa-solid fa-flag-checkered"></i>`;
                             }
                             else {
-                                this.btnRun.textContent = "Next";
+                                this.btnRun.innerHTML = `<i class="fa-solid fa-forward"></i>`
                             }
 
                             setTimeout(() => {
