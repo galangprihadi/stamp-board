@@ -159,7 +159,7 @@ class TilemapGame {
     // ======================================================================================> Buttons
     
     buttonInit() {
-        this.btnSwitch.addEventListener("click", () => {
+        this.btnSwitch.addEventListener("touchstart", () => {
             if (!this.isRunning) {
                 this.playSound("pop");
 
@@ -175,7 +175,7 @@ class TilemapGame {
             }
         });
 
-        this.btnExit.addEventListener("click", () => {
+        this.btnExit.addEventListener("touchstart", () => {
             this.playSound("pop");
 
             const handlerClose = () => {
@@ -189,7 +189,7 @@ class TilemapGame {
             this.gameTransition.addEventListener("animationend", handlerClose);
         });
 
-        this.btnFullScreen.addEventListener("click", () => {
+        this.btnFullScreen.addEventListener("touchstart", () => {
             this.playSound("pop");
 
             if (document.fullscreenElement || 
@@ -226,7 +226,7 @@ class TilemapGame {
             }
         });
 
-        this.btnUndo.addEventListener("click", () => {
+        this.btnUndo.addEventListener("touchstart", () => {
             // Undo
             if (!this.isGameOver) {
                 this.playSound("pop");
@@ -743,7 +743,7 @@ class TilemapGame {
             let arrowIndex = 0;
             let timeOut = null;
 
-            panel.addEventListener("click", (event) => {
+            panel.addEventListener("touchstart", (event) => {
                 if (!this.isRunning) {
                     this.playSound("pop");
 
@@ -795,7 +795,7 @@ class TilemapGame {
             let arrowIndex = 0;
             let timeOut = null;
 
-            btn1.addEventListener("click", () => {
+            btn1.addEventListener("touchstart", () => {
                 if (!this.isRunning) {
                     this.playSound("pop");
 
@@ -819,7 +819,7 @@ class TilemapGame {
                 }
             });
 
-            btn2.addEventListener("click", () => {
+            btn2.addEventListener("touchstart", () => {
                 if (!this.isRunning) {
                     this.playSound("pop");
 
@@ -880,7 +880,7 @@ class TilemapGame {
 
             const buttons = panel.querySelectorAll("button");
 
-            panel.addEventListener("click", () => {
+            panel.addEventListener("touchstart", () => {
                 if (!this.isRunning) {
                     [...buttons].forEach((e) => {
                         e.classList.toggle("show");
@@ -888,14 +888,14 @@ class TilemapGame {
                 }
             });
 
-            btn1.addEventListener("click", () => {
+            btn1.addEventListener("touchstart", () => {
                 if (!this.isRunning) {
                     this.playSound("pop");
                     this.setIcon(icon, 0);
                 }
             });
 
-            btn2.addEventListener("click", () => {
+            btn2.addEventListener("touchstart", () => {
                 if (!this.isRunning) {
                     this.playSound("pop");
                     this.setIcon(icon, 1);
@@ -906,7 +906,7 @@ class TilemapGame {
                 }
             });
 
-            btn3.addEventListener("click", () => {
+            btn3.addEventListener("touchstart", () => {
                 if (!this.isRunning) {
                     this.playSound("pop");
                     this.setIcon(icon, 2);
@@ -917,7 +917,7 @@ class TilemapGame {
                 }
             });
 
-            btn4.addEventListener("click", () => {
+            btn4.addEventListener("touchstart", () => {
                 if (!this.isRunning) {
                     this.playSound("pop");
                     this.setIcon(icon, 3);
@@ -928,7 +928,7 @@ class TilemapGame {
                 }
             });
 
-            btn5.addEventListener("click", () => {
+            btn5.addEventListener("touchstart", () => {
                 if (!this.isRunning) {
                     this.playSound("pop");
                     this.setIcon(icon, 4);
@@ -1058,13 +1058,13 @@ class TilemapGame {
                 panel.style.display = "flex";
             }, 500);
 
-            btn1.addEventListener("click", () => {
+            btn1.addEventListener("touchstart", () => {
                 if (!this.isRunning) {
                     this.setIcon(icon, 0);
                 }
             });
 
-            btn2.addEventListener("click", () => {
+            btn2.addEventListener("touchstart", () => {
                 if (!this.isRunning) {
                     this.playSound("pop");
                     this.setIcon(icon, 1);
@@ -1075,7 +1075,7 @@ class TilemapGame {
                 }
             });
 
-            btn3.addEventListener("click", () => {
+            btn3.addEventListener("touchstart", () => {
                 if (!this.isRunning) {
                     this.playSound("pop");
                     this.setIcon(icon, 2);
@@ -1086,7 +1086,7 @@ class TilemapGame {
                 }
             });
 
-            btn4.addEventListener("click", () => {
+            btn4.addEventListener("touchstart", () => {
                 if (!this.isRunning) {
                     this.playSound("pop");
                     this.setIcon(icon, 3);
@@ -1096,7 +1096,7 @@ class TilemapGame {
                     }, 100);
                 }
             });
-            btn5.addEventListener("click", () => {
+            btn5.addEventListener("touchstart", () => {
                 if (!this.isRunning) {
                     this.playSound("pop");
                     this.setIcon(icon, 4);
