@@ -44,7 +44,7 @@ class TilemapGame {
         this.entry2 = param.entry2;
 
         this.playerId = localStorage.getItem("playerData") || "no id";
-        this.playerData = this.formId + " ";
+        this.playerData = this.formId + " _ ";
 
         if (!this.switchMode) {
             this.btnSwitch.style.display = "none";
@@ -629,7 +629,10 @@ class TilemapGame {
                                 case "Stamp Mode"    : inputModeId = 5; break;
                             }
 
-                            this.playerData += `L${this.currentLevel}I${inputModeId}T${this.levelTime}A${this.attempt}J${this.journey}S${this.step}`;
+                            //                  level                inputMode      time              attempt         numOfCommands   stepToGoal
+                            this.playerData += `${this.currentLevel},${inputModeId},${this.levelTime},${this.attempt},${this.journey},${this.step} _ `;
+
+                            // this.playerData += `L${this.currentLevel}I${inputModeId}T${this.levelTime}A${this.attempt}J${this.journey}S${this.step}`;
                         }
                     }
                     else {
@@ -951,10 +954,16 @@ class TilemapGame {
                         const dropperRect = e.getBoundingClientRect();
 
                         if (Math.abs(draggerRect.left - dropperRect.left) < 30 && Math.abs(draggerRect.top - dropperRect.top) < 30) {
+                            this.playSound("pop");
+
                             this.setIcon(icons[id], i);
                             this.player.command[id] = this.setCommand(i);
 
-                            this.playSound("pop");
+                            dragger.style.opacity = "0";
+
+                            setTimeout(() => {
+                                dragger.style.opacity = "1";
+                            }, 500);
                         }
                     });
                 };
