@@ -5,6 +5,10 @@
 ////////////////////////     Galang P Mahardhika              ////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////
 
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+});
+
 class TilemapGame {
     gameTransition = document.querySelector(".game-transition");
     gameCanvas = document.querySelector("#game-canvas");
