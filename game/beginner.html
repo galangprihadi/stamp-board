@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Level Easy</title>
+
+    <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
+    <link rel="stylesheet" href="../css/tilemapStyle-4.1.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css">
+</head>
+<body>
+    <audio id="soundBgm" src="../sounds/bgm.mp3" preload="auto" loop></audio>
+    <audio id="soundCling" src="../sounds/cling.mp3" preload="auto"></audio>
+    <audio id="soundDone" src="../sounds/done.mp3" preload="auto"></audio>
+    <audio id="soundPop" src="../sounds/pop.mp3" preload="auto"></audio>
+    <audio id="soundShake" src="../sounds/shake.mp3" preload="auto"></audio>
+    <audio id="soundTransition" src="../sounds/transition.mp3" preload="auto"></audio>
+
+    <div class="game-transition"></div>
+    
+    <div class="game-layer">
+        <div class="game-container">
+            <div class="canvas-wrapper">
+                <div class="game-title">
+                    <span id="level-text">Level ?</span>
+                    <button id="button-switch"><i class="fa-solid fa-repeat"></i></button>
+                </div>
+                <canvas id="game-canvas"></canvas>
+            </div>
+            <div class="info-panel">
+                <button id="button-exit">X</button>
+                <div class="text">Time<br><span id="time-text">00:00</span></div>
+                <div class="text">Attempt<br><span id="attempt-text">0</span></div>
+                <button id="button-fullscreen"><i class="fa-solid fa-expand"></i></button>
+                <button id="button-run"><i class="fa-solid fa-play"></i></button>
+            </div>
+        </div>
+
+        <div id="command-panel"></div>
+    </div>
+
+    <script src="beginner.js"></script>
+    <script src="../js/tilemap-4.2.js"></script>
+
+    <script>
+        const game = new TilemapGame({
+            freeMode : false,
+            switchMode : true,
+            homePage : "../index.html",
+            autoTimer: true,
+            formId: "easy",
+            // formAction: "https://docs.google.com/forms/u/0/d/e/1FAIpQLSdWQt71q2d6Vjtw4ulIC40XWXab5ZUdTihKRIi0YWg5K9j8GA/formResponse",
+            // entry1: "entry.1262155010",
+            // entry2: "entry.1024717398",
+        });
+    </script>
+
+</body>
+</html>
